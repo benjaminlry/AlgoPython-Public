@@ -24,33 +24,40 @@ b=a+2
 mylist_sum=mylist+mylist2
 """
 
+def average_above_zero(tab): 
+    """
+    Brief: computes the average with positiv value
+    Args: 
+        tab: a liste of numeric value exepcts at least one positive valus, raise expection
+    Return: the computedd average
+    Raises :
+        ValueError if no positive value is found
+        ValueError if input is not a list
+    """
+    if not(isinstance(tab, list)):
+        raise ValueError('Expected a list as input')
+        
+    average=-99
+    valSum=0.0 #initialize valSum to float
+    nPositiveValues=0
+    NMAX=len(tab) #get the size of tab
+    
+    for val in tab:
+        if val > 0:
+            valSum+=float(val)
+            nPositiveValues+=1
+            
+    if nPositiveValues <=0:
+        raise ValueError('No positive value found')
+    average=valSum/nPositiveValues
+    
+    return average
 
-def average_above_zero(input_list):
-    ##
-    # compute the average of positive values
-    # @input_list : the list of values to process
-    # @return the average value of all the positive elements
-
-    #init critical variable
-    positive_values_sum=0
-    positive_values_count=0
-
-    first_item=input_list[0] #just a line to generate a code smell with an unused value
-
-    #compute the average of positive elements of a list
-    for item in input_list:
-        #select only positive items
-        if item>0:
-            positive_values_sum+=item
-            positive_values_count+=1
-        elif item==0:
-            print('This value is null:'+str(item))
-        else:
-            print('This value is negative:'+str(item))
-    #compute the final average
-    average=float(positive_values_sum)/float(positive_values_count)
-    print('Positive elements average is '+str(average))
-    return float(average)
+#Test script for average_above_zero
+test_tab=[1,2,3,-5]
+moy=average_above_zero(test_tab)
+#print('Positive values average = '+str(moy))
+print('Positive values average = {v}'.format(v=moy))
 
 """#testing average_above_zero function:
 mylist=[1,2,3,4,-7]
