@@ -22,4 +22,16 @@ Evaluation will consist of continuous control and a mid term test.
 
 Evaluation will take into account your code quality and assignements coverage but also github pull request and commits naming conventions and code comments.
 
+<<<<<<< HEAD
 udpate3
+=======
+<<<<<<< HEAD
+oui
+=======
+<<<<<<< HEAD
+Yes You Can !
+=======
+test de commit !
+>>>>>>> fe39c7f4064219dda563a371256e9faad9bdb295
+>>>>>>> a97e8c3865f07f08b030c6577251abd66de160bd
+>>>>>>> 0a7fbb8a80fa14cc973ede0423c18b8e35f49d76
