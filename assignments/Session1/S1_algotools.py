@@ -53,8 +53,9 @@ def average_above_zero(tab):
     
     return average
 
+    
 #Test script for average_above_zero
-test_tab=[1,2,3,-5]
+test_tab=[1,2,3,-5, 100]
 moy=average_above_zero(test_tab)
 #print('Positive values average = '+str(moy))
 print('Positive values average = {v}'.format(v=moy))
@@ -87,12 +88,13 @@ def max_value(input_list):
     """
     #generic style : iterate over the range of list indexes
     for idx in range(len(input_list)):
+        """if(input_list[idx] > 0):
         #select only positive items
-        if max_val<input_list[idx]:
-            max_val=input_list[idx]
-            max_idx=idx
+            if max_val<input_list[idx]:
+                max_val=input_list[idx]
+                max_idx=idx"""
 
-
+"""
     #generic style : iterate over the range of list indexes
     for idx, item in enumerate(input_list):
         #select only positive items
@@ -101,19 +103,22 @@ def max_value(input_list):
             max_idx=idx
 
     return max_val, max_idx
+    
 """
+
+
 #test max_value function
 #1 basic test, expected answer=2
 mylist=[-1,2,-20]
-mymax, mymaxidx=max_value(mylist)
+"""mymax, mymaxidx=max_value(mylist)
 mymax_tuple=max_value(mylist)
-mymax=mymax_tuple[0]
+mymax=mymax_tuple[0]"""
 print('Max value of {input_list} is {max_scan}'.format(input_list=mylist, max_scan=mymax))
 #==> message : "Max value of [-1, 2, -20] is (2, 1)"
 
 #2 error test : Exception expected
 max_value([])
-"""
+
 
 """
 # hints to solve the roi_bbox function exercise: numpy basics
