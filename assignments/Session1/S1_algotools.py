@@ -90,76 +90,28 @@ print('Positive values max = {v}'.format(v=maxPerso))
 
 
 
-"""
-def average_above_zero(input_list):
-    ##
-    # compute the average of positive values
-    # @input_list : the list of values to process
-    # @return the average value of all the positive elements
-
-    #init critical variable
-    positive_values_sum=0
-    positive_values_count=0
-
-    first_item=input_list[0] #just a line to generate a code smell with an unused value
-
-    #compute the average of positive elements of a list
-    for item in input_list:
-        #select only positive items
-        if item>0:
-            positive_values_sum+=item
-            positive_values_count+=1
-        elif item==0:
-            print('This value is null:'+str(item))
-        else:
-            print('This value is negative:'+str(item))
-    #compute the final average
-    average=float(positive_values_sum)/float(positive_values_count)
-    print('Positive elements average is '+str(average))
-    return float(average)
-"""
-
-"""#testing average_above_zero function:
-mylist=[1,2,3,4,-7]
-result=average_above_zero(mylist)
-message='The average of positive samples of {list_value} is {res}'.format(list_value=mylist,
-                                                                          res=result)
-print(message)
-"""
-
-def max_value(input_list):
-    ##
-    # basic function able to return the max value of a list
-    # @param input_list : the input list to be scanned
-    # @throws an exception (ValueError) on an empty list
-
-    #first check if provided list is not empty
-    if len(input_list)==0:
-        raise ValueError('provided list is empty')
-    #init max_value and its index
-    max_val=input_list[0]
-    max_idx=0
-    #compute the average of positive elements of a list
-    """for item in input_list:
-        #select only positive items
-        if max_val<item:
-            max_val=item
+def reverse_table(tab): 
     """
-    #generic style : iterate over the range of list indexes
-    for idx in range(len(input_list)):
-        """if(input_list[idx] > 0):
-        #select only positive items
-            if max_val<input_list[idx]:
-                max_val=input_list[idx]
-                max_idx=idx"""
-
-"""
-    #generic style : iterate over the range of list indexes
-    for idx, item in enumerate(input_list):
-        #select only positive items
-        if max_val<item:
-            max_val=item
-            max_idx=idx
-
-    return max_val, max_idx
+    Brief: reverse input tab
+    Args: 
+        tab: a liste with values
+    Return: the same liste with an other order
     """
+    if not(isinstance(tab, list)):
+        raise ValueError('Expected a list as input')
+    
+    result_table=[]
+    sizeTab = len(tab);
+    actualPosition = sizeTab-1;
+    while actualPosition >= 0:
+        if len(tab) > 0:
+                result_table.append(tab[actualPosition])
+                actualPosition = actualPosition - 1 
+    return result_table
+
+    
+#Test script for average_above_zero
+test_tab_reverse=[1,2,3,-5, 100]
+tab_reverse=reverse_table(test_tab_reverse)
+#print('Positive values average = '+str(moy))
+print('Tab reverse = {v}'.format(v=tab_reverse))
