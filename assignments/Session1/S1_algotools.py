@@ -43,22 +43,27 @@ def average_above_zero(tab):
     NMAX=len(tab) #get the size of tab
     
     for val in tab:
+        if isinstance(val, str):
+            val = -99;
         if val >= 0:
             valSum+=float(val)
             nPositiveValues+=1
             
     if nPositiveValues <=0:
         """raise ValueError('No positive value found')"""
-        average = 0;
+        average = 0
     
     if nPositiveValues != 0:
         average=valSum/nPositiveValues
+        
+    """if nStringValues == NMAX:
+        average = 0"""
     
     return average
 
     
 #Test script for average_above_zero
-test_tab_average=[0,1,2,3,4,-7]
+test_tab_average=["aa", "a"]
 moy=average_above_zero(test_tab_average)
 #print('Positive values average = '+str(moy))
 print('Positive values average = {v}'.format(v=moy))
