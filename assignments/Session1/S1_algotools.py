@@ -43,8 +43,8 @@ def average_above_zero(tab):
     NMAX=len(tab) #get the size of tab
     
     for val in tab:
-        if isinstance(val, str):
-            raise ValueError('No string value found')
+        """if isinstance(val, str):
+            raise ValueError('No string value found')"""
         if val >= 0:
             valSum+=float(val)
             nPositiveValues+=1
