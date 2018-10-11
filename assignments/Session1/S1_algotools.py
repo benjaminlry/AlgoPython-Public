@@ -48,14 +48,17 @@ def average_above_zero(tab):
             nPositiveValues+=1
             
     if nPositiveValues <=0:
-        raise ValueError('No positive value found')
-    average=valSum/nPositiveValues
+        """raise ValueError('No positive value found')"""
+        average = 0;
+    
+    if nPositiveValues != 0:
+        average=valSum/nPositiveValues
     
     return average
 
     
 #Test script for average_above_zero
-test_tab_average=[1,2,3,-5]
+test_tab_average=[0,-7]
 moy=average_above_zero(test_tab_average)
 #print('Positive values average = '+str(moy))
 print('Positive values average = {v}'.format(v=moy))
@@ -76,9 +79,8 @@ def max_value_perso(tab):
     numberMaxi=0
         
     for val in tab:
-        if val > 0:
-            if val > numberMaxi:
-                numberMaxi=val
+        if val > numberMaxi:
+            numberMaxi=val
     return numberMaxi
 
     
