@@ -43,7 +43,7 @@ def average_above_zero(tab):
     NMAX=len(tab) #get the size of tab
     
     for val in tab:
-        if val > 0:
+        if val >= 0:
             valSum+=float(val)
             nPositiveValues+=1
             
@@ -58,7 +58,7 @@ def average_above_zero(tab):
 
     
 #Test script for average_above_zero
-test_tab_average=[0,-7]
+test_tab_average=[0,1,2,3,4,-7]
 moy=average_above_zero(test_tab_average)
 #print('Positive values average = '+str(moy))
 print('Positive values average = {v}'.format(v=moy))
