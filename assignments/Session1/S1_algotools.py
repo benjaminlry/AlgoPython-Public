@@ -44,7 +44,7 @@ def average_above_zero(tab):
     
     for val in tab:
         if isinstance(val, str):
-            val = -99;
+            raise ValueError('No string value found')
         if val >= 0:
             valSum+=float(val)
             nPositiveValues+=1
