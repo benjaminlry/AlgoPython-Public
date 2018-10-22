@@ -252,4 +252,27 @@ print('inputMat='+str(inputMat))
 roi=roi_bbox(inputMat)
 print('roi='+str(roi))
 
+def remove_whitespace(tab): 
+    if not(isinstance(tab, list)):
+        raise ValueError('Expected a list as input')
+    
+    for letter in tab:
+        if letter == " ":
+            tab.remove(letter)
+    return tab
 
+def test_remove_whitespace():
+    testList=["a"," ","b","c","d"]
+    import copy
+    testListCopy = copy.deepcopy(testList)
+    assert testList==remove_whitespace(testList)
+    print('Remove whitespace = {i} => {o}'.format(i=testListCopy,o=testList))
+test_remove_whitespace()
+
+def test_remove_whitespace_empty():
+    testList=[]
+    import copy
+    testListCopy = copy.deepcopy(testList)
+    assert testList==remove_whitespace(testList)
+    print('Remove whitespace empty = {i} => {o}'.format(i=testListCopy,o=testList))
+test_remove_whitespace_empty()
