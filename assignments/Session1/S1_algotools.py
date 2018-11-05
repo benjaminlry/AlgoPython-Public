@@ -252,7 +252,16 @@ print('inputMat='+str(inputMat))
 roi=roi_bbox(inputMat)
 print('roi='+str(roi))
 
-def remove_whitespace(tab): 
+def remove_whitespace_array(tab): 
+    """
+    this function remove whitespace in list
+
+    @param : tab, list with whitespace
+    @type : list
+    
+    @param : tab, list without whitespace
+    @type : list
+    """
     if not(isinstance(tab, list)):
         raise ValueError('Expected a list as input')
     
@@ -261,18 +270,39 @@ def remove_whitespace(tab):
             tab.remove(letter)
     return tab
 
-def test_remove_whitespace():
+def test_remove_whitespace_array():
     testList=["a"," ","b","c","d"]
     import copy
     testListCopy = copy.deepcopy(testList)
     assert testList==remove_whitespace(testList)
-    print('Remove whitespace = {i} => {o}'.format(i=testListCopy,o=testList))
+    print('Remove whitespace array = {i} => {o}'.format(i=testListCopy,o=testList))
 test_remove_whitespace()
 
-def test_remove_whitespace_empty():
+def test_remove_whitespace_array_empty():
     testList=[]
     import copy
     testListCopy = copy.deepcopy(testList)
     assert testList==remove_whitespace(testList)
-    print('Remove whitespace empty = {i} => {o}'.format(i=testListCopy,o=testList))
-test_remove_whitespace_empty()
+    print('Remove whitespace array empty = {i} => {o}'.format(i=testListCopy,o=testList))
+test_remove_whitespace_empty() 
+
+def remove_whitespace_string(string):
+    """
+    this function remove whitespace in string
+
+    @param : string, string with whitespace
+    @type : String
+    
+    @param : string, string without whitespace
+    @type : String
+    """
+    if not(isinstance(string, str)):
+        raise ValueError('Expected a list as input')
+        
+    return string.replace(' ', '')
+
+def test_remove_whitespace_string():
+    testString="a b cde f"
+    testStringResult = remove_whitespace_string(testString)
+    print('Remove whitespace string = {i} => {o}'.format(i=testString,o=testStringResult))
+test_remove_whitespace_string()
