@@ -351,7 +351,7 @@ def dice_game():
             r = randomDice()
             print(r)
             if(r == 1):
-                print('Perdu, votre score de change pas')
+                print('Perdu, votre score ne change pas')
                 tempScore = 0
                 part += 1
             else:
