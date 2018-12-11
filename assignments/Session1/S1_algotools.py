@@ -3,6 +3,8 @@
 # @author Alexandre Benoit, LISTIC Lab, IUT Annecy le vieux, FRANCE
 # @brief a set of generic functions for data management
 
+import random
+
 """
 # a variable
 a=1 # default type : int
@@ -306,3 +308,78 @@ def test_remove_whitespace_string():
     testStringResult = remove_whitespace_string(testString)
     print('Remove whitespace string = {i} => {o}'.format(i=testString,o=testStringResult))
 test_remove_whitespace_string()
+
+"""def random_array_filling(l,c):
+    array=[["" for j in range (c)]for i in range(l)]
+    #array=[["","",""],["","",""],["","",""]]
+    
+    for n in range (4):
+        lRandom = random.randint(0,l-1)
+        cRandom = random.randint(0,c-1)
+        
+    #print(array[0[1]])
+        
+    for i in range (l):
+        print (array[i])
+    
+random_array_filling(3,4)"""
+
+
+def dice_game():
+    part = 0
+    plName = ""
+    pcName = "Bot"
+    plScore = 0
+    pcScore = 0
+    tempScore = 0
+    win = 0
+    
+    print('Quel est votre nom ?')
+    plName = input()
+    
+    while(win == 0):
+        actualName = ""
+        if(part%2 == 0):
+            actualName = plName
+        elif(part%2 == 1):
+            actualName = pcName
+        
+        print(actualName+', voulez-vous jouer ? (y ou n)')
+        x1 = input()
+        
+        if(x1 == 'y'):
+            r = randomDice()
+            print(r)
+            if(r == 1):
+                print('Perdu, votre score de change pas')
+                tempScore = 0
+                part += 1
+            else:
+                tempScore += r
+                
+        elif(x1 == 'n'):
+            if(part%2 == 0):
+                plScore += tempScore
+                if(plScore >= 100):
+                    win = 1
+                    print('Winner is '+actualName)
+            elif(part%2 == 1):
+                pcScore += tempScore
+                if(pcScore >= 100):
+                    win = 1
+                    print('Winner is '+actualName)
+            tempScore = 0
+            part += 1
+
+        print(pcName+str(pcScore))
+        print(plName+str(plScore))
+            
+        
+    
+def randomDice():
+    return random.randint(1,6)
+    
+dice_game()
+
+
+

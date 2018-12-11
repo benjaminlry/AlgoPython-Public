@@ -11,7 +11,7 @@ def shuffle(list_int):
 
     return list_int
 
-test_list=[1,2,3,4,5]
+test_list=[1,2,3,4,5,6]
 list_int_shuffle=shuffle(test_list)
 
 print('List shuffle = {v}'.format(v=list_int_shuffle))

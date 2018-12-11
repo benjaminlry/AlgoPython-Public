@@ -31,8 +31,8 @@ def test_session1script_exists():
     try:
         load_S1_script()
         assert True
-    except  ImportError,e:
-    """except  ImportError as e:"""
+    except  ImportError:
+        """except  ImportError as e:"""
         print('Expected script not found, carrefuly check the assignement instructions ')
         assert False
 
@@ -67,11 +67,11 @@ def test_S1_selective_average_with_string_values():
     # @test validates average_above_zero works fine with integer values <=0
     check_S1_selective_average(['ab','c'])
 
-def test_S1_selective_average_with_string_values():
+"""def test_S1_selective_average_with_string_values():
     ##
     # @test validates average_above_zero works fine with an empty list
     try:
         check_S1_selective_average([])
         assert False
     except ValueError:
-        assert True
+        assert True"""
