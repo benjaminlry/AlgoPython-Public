@@ -65,7 +65,7 @@ moy=average_above_zero(test_tab_average)
 print('Positive values average = {v}'.format(v=moy))
 
 
-def max_value_perso(tab): 
+def max_value(tab): 
     """
     Brief: computes the max with positiv value
     Args: 
@@ -85,7 +85,7 @@ def max_value_perso(tab):
     return numberMaxi
 
 test_tab_max=[1,2,3,-5, 100]
-maxPerso=max_value_perso(test_tab_max)
+maxPerso=max_value(test_tab_max)
 
 print('Positive values max = {v}'.format(v=maxPerso))
 
@@ -145,23 +145,23 @@ test_revertTab_evenValue()
 
 
 
-def roi_bbox(inputMat):    
+def roi_bbox(input_image):    
     #input data type check
-    if not(isinstance(inputMat, np.ndarray)):
+    if not(isinstance(input_image, np.ndarray)):
         raise ValueError('Expected a numpy array as input')
     
-    if not(inputMat.dtype==np.bool):
+    if not(input_image.dtype==np.bool):
         raise ValueError('Expected input of type numpy boolean')
     
-    lmin = inputMat.shape[0]
+    lmin = input_image.shape[0]
     lmax = 0
-    cmin = inputMat.shape[1]
+    cmin = input_image.shape[1]
     cmax = 0
     
-    for l in range(inputMat.shape[0]):
-        for c in range(inputMat.shape[1]):
+    for l in range(input_image.shape[0]):
+        for c in range(input_image.shape[1]):
             #check line axis
-            if inputMat[l,c] == True:
+            if input_image[l,c] == True:
                 if l<lmin:
                     lmin=l
                 if l>lmax:
@@ -186,109 +186,7 @@ roi=roi_bbox(inputMat)
 print('roi='+str(roi))
 
 
-def remove_whitespace(tab): 
-    if not(isinstance(tab, list)):
-        raise ValueError('Expected a list as input')
-    
-    for letter in tab:
-        if letter == " ":
-            tab.remove(letter)
-    return tab
-
-def test_remove_whitespace():
-    testList=["a"," ","b","c","d"]
-    import copy
-    testListCopy = copy.deepcopy(testList)
-    assert testList==remove_whitespace(testList)
-    print('Remove whitespace = {i} => {o}'.format(i=testListCopy,o=testList))
-test_remove_whitespace()
-
-def test_remove_whitespace_empty():
-    testList=[""]
-    import copy
-    testListCopy = copy.deepcopy(testList)
-    assert testList==remove_whitespace(testList)
-    print('Remove whitespace empty = {i} => {o}'.format(i=testListCopy,o=testList))
-test_remove_whitespace_empty()
-
-
-
-
-def roi_bbox(inputMat):    
-    #input data type check
-    if not(isinstance(inputMat, np.ndarray)):
-        raise ValueError('Expected a numpy array as input')
-    
-    if not(inputMat.dtype==np.bool):
-        raise ValueError('Expected input of type numpy boolean')
-    
-    lmin = inputMat.shape[0]
-    lmax = 0
-    cmin = inputMat.shape[1]
-    cmax = 0
-    
-    for l in range(inputMat.shape[0]):
-        for c in range(inputMat.shape[1]):
-            #check line axis
-            if inputMat[l,c] == True:
-                if l<lmin:
-                    lmin=l
-                if l>lmax:
-                    lmax=l
-                if c<cmin:
-                    cmin=c
-                if c>cmax:
-                    cmax=c
- 
-    roi = [[lmin,cmin],
-           [lmin,cmax],
-           [lmax,cmin],
-           [lmax,cmax]]
-                    
-    return np.array(roi)
-        
-import numpy as np
-inputMat=np.zeros((5,6),dtype=np.bool)
-inputMat[2:4,3:5]=np.ones((2,2),dtype=np.bool)
-print('inputMat='+str(inputMat))
-roi=roi_bbox(inputMat)
-print('roi='+str(roi))
-
-def remove_whitespace_array(tab): 
-    """
-    this function remove whitespace in list
-
-    @param : tab, list with whitespace
-    @type : list
-    
-    @param : tab, list without whitespace
-    @type : list
-    """
-    if not(isinstance(tab, list)):
-        raise ValueError('Expected a list as input')
-    
-    for letter in tab:
-        if letter == " ":
-            tab.remove(letter)
-    return tab
-
-def test_remove_whitespace_array():
-    testList=["a"," ","b","c","d"]
-    import copy
-    testListCopy = copy.deepcopy(testList)
-    assert testList==remove_whitespace(testList)
-    print('Remove whitespace array = {i} => {o}'.format(i=testListCopy,o=testList))
-test_remove_whitespace()
-
-def test_remove_whitespace_array_empty():
-    testList=[]
-    import copy
-    testListCopy = copy.deepcopy(testList)
-    assert testList==remove_whitespace(testList)
-    print('Remove whitespace array empty = {i} => {o}'.format(i=testListCopy,o=testList))
-test_remove_whitespace_empty() 
-
-def remove_whitespace_string(string):
+def remove_whitespace(string):
     """
     this function remove whitespace in string
 
@@ -300,14 +198,24 @@ def remove_whitespace_string(string):
     """
     if not(isinstance(string, str)):
         raise ValueError('Expected a list as input')
-        
-    return string.replace(' ', '')
+    n = ""
+    for l in range(len(string)):
+        if(string[l] != " "):
+            n += string[l]
+    #return string.replace(' ', '')
+    return n
 
-def test_remove_whitespace_string():
+def test_remove_whitespace():
     testString="a b cde f"
-    testStringResult = remove_whitespace_string(testString)
+    testStringResult = remove_whitespace(testString)
     print('Remove whitespace string = {i} => {o}'.format(i=testString,o=testStringResult))
-test_remove_whitespace_string()
+test_remove_whitespace()
+
+def test_remove_whitespace_empty():
+    testStringEmpty=""
+    testStringResultEmpty = remove_whitespace(testStringEmpty)
+    print('Remove whitespace string empty = {i} => {o}'.format(i=testStringEmpty,o=testStringResultEmpty))
+test_remove_whitespace_empty()
 
 """def random_array_filling(l,c):
     array=[["" for j in range (c)]for i in range(l)]
@@ -323,7 +231,6 @@ test_remove_whitespace_string()
         print (array[i])
     
 random_array_filling(3,4)"""
-
 
 def dice_game():
     part = 0
@@ -379,7 +286,7 @@ def dice_game():
 def randomDice():
     return random.randint(1,6)
     
-dice_game()
+#dice_game()
 
 
 
