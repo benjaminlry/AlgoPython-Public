@@ -4,6 +4,7 @@
 # @brief a set of generic functions for data management
 
 import random
+import time
 
 """
 # a variable
@@ -235,14 +236,18 @@ random_array_filling(3,4)"""
 def dice_game():
     part = 0
     plName = ""
-    pcName = "Bot"
+    pcName = "Bob"
     plScore = 0
     pcScore = 0
     tempScore = 0
+    coups = 0
     win = 0
     
     print('Quel est votre nom ?')
     plName = input()
+    print('')
+    print('Votre adversaire s\'appelle Bob !')
+    print('')
     
     while(win == 0):
         actualName = ""
@@ -252,41 +257,72 @@ def dice_game():
             actualName = pcName
         
         print(actualName+', voulez-vous jouer ? (y ou n)')
-        x1 = input()
+        
+        if(part%2 == 0):
+            x1 = input()
+        elif(part%2 == 1):
+            computerDecisionValue = random.randint(0,100)
+            if(coups == 0):
+                x1 = 'y'
+                print(actualName+' rejoue')
+            else: 
+                if(computerDecisionValue <= 68):
+                    x1 = 'y'
+                    print(actualName+' rejoue')
+                else:
+                    x1 = 'n'
+                    print(actualName+' arrête de rejouer')
+            time.sleep(1.5)
         
         if(x1 == 'y'):
             r = randomDice()
-            print(r)
+            print('Dé --> '+str(r))
             if(r == 1):
                 print('Perdu, votre score ne change pas')
                 tempScore = 0
+                coups = 0
                 part += 1
             else:
                 tempScore += r
+                coups += 1
+                if(part%2 == 0):
+                    print('\/ Score temporaire')
+                    print(tempScore+plScore)
+                elif(part%2 == 1):
+                    print('\/ Score temporaire')
+                    print(tempScore+pcScore)
                 
         elif(x1 == 'n'):
+            coups = 0
             if(part%2 == 0):
                 plScore += tempScore
                 if(plScore >= 100):
                     win = 1
-                    print('Winner is '+actualName)
+                    print('You are the winner !')
             elif(part%2 == 1):
                 pcScore += tempScore
                 if(pcScore >= 100):
                     win = 1
-                    print('Winner is '+actualName)
+                    print(actualName+' is the winner !')
             tempScore = 0
             part += 1
 
-        print(pcName+str(pcScore))
-        print(plName+str(plScore))
-            
+        print('')
+        print('▓▓▓▓ SCORE ▓▓▓▓')
+        print(pcName+' > '+str(pcScore))
+        print(plName+' > '+str(plScore))
+        print('▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓')
+        print('')
         
     
 def randomDice():
     return random.randint(1,6)
-    
-#dice_game()
+  
+print('-------- Dice Game --------')
+print('Saisir \'play\' pour lancer le jeu de dés')
+playDiceGame = input()
+if(playDiceGame == 'play'):
+    dice_game()
 
 
 
